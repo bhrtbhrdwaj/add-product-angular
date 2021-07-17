@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.add-feature{
+    text-decoration: none;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 2px;
+}
+.add-feature:hover{
+    cursor: pointer;
+    color: cornflowerblue;
+    background-color: white;
+    border: 1px solid cornflowerblue;
+}
+.primary{
+    color: cornflowerblue;
+}

@@ -1,0 +1,42 @@
+
+<h1 class="text-center primary mt-5">Product Review System- <span style="color: red">Add Product Module</span></h1>
+
+<div class="d-flex justify-content-evenly mt-5">
+  <form enctype="multipart/form-data" [formGroup]="product" class="w-50" name="add-product" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="product-id">Product Id:</label>
+    <input class="form-control" id="product-id" type="text" formControlName="id"  (focusout)="checkProductId($event)"/>
+    <small class="text-danger"
+        *ngIf="exists">
+          Product Id exists.
+      </small>
+    <small class="text-danger"
+        *ngIf="product.get('id').hasError('required')">
+          Product id is required.
+      </small>
+  </div>
+  <div class="form-group">
+    <label for="product-name">Product Name:</label>
+    <input class="form-control" id="product-id" type="text" formControlName="name"/>
+      <small class="text-danger"
+        *ngIf="product.get('name').hasError('required')">
+          Product name is required.
+      </small>
+      <small class="text-danger"
+        *ngIf="product.get('name').hasError('maxlength')">
+        Product name should be {{product.get('name').errors.maxlength.requiredLength}} characters.
+    </small>
+  </div>
+  <div class="form-group">
+    <label for="product-image">Add Image:</label>
+    <input class="form-control" id="product-image" type="file" (change)="setFile($event)" accept="image/*"/>
+  </div>
+  <div class="form-control">
+  <label for="feature">Add Features:</label>
+  <app-feature *ngFor="let f of feature"></app-feature>
+  <p class="text-center p-2"><a class="add-feature" href="#" (click)="addFeature()">Add another feature</a></p>
+  </div>
+  <br/>
+  <div class="text-center"><input type="submit" value="Add Product" [disabled]="!product.valid"/></div>
+  </form>
+</div>
