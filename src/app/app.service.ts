@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class AppService {
 
+  added = false;
+  prod;
 
 features = new Array();
 productImage;
@@ -25,7 +27,9 @@ baseUrl = "https://product-review-x.herokuapp.com/";
     
     formData.append("productImage", this.productImage);
 
-    return this.httpClient.post(this.baseUrl+"products", formData)
+    this.httpClient.post(this.baseUrl+"products", formData).subscribe(
+      (data) =>{ this.added = true; this.prod = data;}
+    );
     
   }
 
