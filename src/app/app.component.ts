@@ -9,9 +9,6 @@ import { FeatureComponent } from './feature/feature.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  added = false;
-  pro;
-
   exists = false;
   
   product = this.fb.group({
@@ -38,8 +35,6 @@ export class AppComponent {
   onSubmit(): void{
     this.product.value.features = this.serivce.getFeatures();
     this.serivce.addProduct(this.product.value);
-    this.added = this.serivce.added;
-    this.pro = this.serivce.prod;
     this.serivce.features = new Array();
     this.product.reset(this.productInitialValue);
   }
