@@ -1,5 +1,9 @@
 
 <h1 class="text-center primary mt-5">Product Review System- <span style="color: red">Add Product Module</span></h1>
+<p class="text-success  text-center"
+*ngIf="added">
+  Product with product id: {{pro.id}} added successfully.
+</p>
 
 <div class="d-flex justify-content-evenly mt-5">
   <form enctype="multipart/form-data" [formGroup]="product" class="w-50" name="add-product" (ngSubmit)="onSubmit()">

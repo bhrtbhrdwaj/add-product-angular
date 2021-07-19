@@ -9,6 +9,8 @@ import { FeatureComponent } from './feature/feature.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  added = false;
+  pro;
 
   exists = false;
   
@@ -35,7 +37,8 @@ export class AppComponent {
 
   onSubmit(): void{
     this.product.value.features = this.serivce.getFeatures();
-    this.serivce.addProduct(this.product.value);
+    this.pro = this.serivce.addProduct(this.product.value);
+    this.added = true;
     this.product.reset(this.productInitialValue);
   }
 
